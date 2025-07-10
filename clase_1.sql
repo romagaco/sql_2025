@@ -24,6 +24,14 @@ select MIN(length) as pelicula_minima_duracion,
 select rating, MIN(replacement_cost) as minimo_costo, MAX(replacement_cost) as maximo_costo 
 	from film group by rating;
 
-
-select reale_year, count(*)  as total from film group by release_year;
+select release_year , count(*)  as total from film group by release_year;
+    
+select special_features, avg(length) as duracion_promedio from film
+	group by special_features;
+    
+select rating, count(*) as total from film group by rating
+	having count(*) > 50;
+    
+select special_features, avg(length) as duracion_promedio from
+	film group by special_features having avg(length)>100;
     
