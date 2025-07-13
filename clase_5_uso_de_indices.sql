@@ -36,3 +36,19 @@ against ("+drama -boring" in boolean mode);
 
 /* el signo - se utiliza para indicar que queremos que la palabra no se contenga */ 
 
+
+/* obtener las ventas activas ordenadas por fecha usando indices */
+create index id_rental_cx_retal on rental(customer_id, return_date);
+
+
+explain analyze
+select rental_id, rental_date, inventory_id from rental where customer_id = 461
+	and return_date is NULL 
+    order by rental_date desc;
+
+
+/* previo a la  creacion del indice el resultado en time era de 0.3776*/
+/* luego del indice el resultado en time es de 0.028 */
+
+
+
